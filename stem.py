@@ -23,7 +23,7 @@ async def on_ready():
 	now_time = nd.strftime("%H:%M:%S") 
 	print(">> Консоль <<" " Бот запущен "+(now_time)) 
 	await client.change_presence( status = discord.Status.online, activity=discord.Game ("Discord") )
-	printer.start()
+	#printer.start()
 
 #@tasks.loop(minutes=12)
 #async def printer():
