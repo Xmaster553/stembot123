@@ -25,12 +25,12 @@ async def on_ready():
 	await client.change_presence( status = discord.Status.online, activity=discord.Game ("Discord") )
 	printer.start()
 
-@tasks.loop(minutes=12)
-async def printer():
-	channel = client.get_channel(848248409806602301)
-	nds = datetime.datetime.now()
-	now_time = nds.strftime(" %H:%M:%S ")
-	await channel.send(f"Привет!")
+#@tasks.loop(minutes=12)
+#async def printer():
+	#channel = client.get_channel(848248409806602301)
+	#nds = datetime.datetime.now()
+	#now_time = nds.strftime(" %H:%M:%S ")
+	#await channel.send(f"Привет!")
 
 @client.event
 async def on_member_join(member):
