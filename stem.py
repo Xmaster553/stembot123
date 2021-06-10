@@ -34,7 +34,7 @@ async def printer():
 
 @client.event
 async def on_member_join(member):
-	channel = client.get_channel(848248409806602301)
+	channel = client.get_channel(825463627586601000)
 
 	emb = discord.Embed(title = 'ДОБРО ПОЖАЛОВАТЬ', description = f'**{member.name}** приветствуем тебя на сервере {member.guild.name}. На нашем сервере мы проводим ивенты, общаемся и играем в разные игры.\n\n**ОЗНАКОМЬСЯ С ДАННЫМИ КАНАЛАМИ:**', color = 0xCC974F)
 	emb.add_field(
@@ -48,11 +48,16 @@ async def on_member_join(member):
         value = 'проходят ежедневные розыгрыши с хорошими призами.', inline = False)
 	emb.set_footer(text="ПРИЯТНОГО ВРЕМЯ ПРОВЕДЕНИЯ НА НАШЕМ СЕРВЕРЕ")
 
-	role_1 = member.guild.get_role(835554688559611961)
+	role_1 = member.guild.get_role(838788077547028571)
 	await member.add_roles(role_1)
+	beta = member.guild.get_role(825854167767711745)
+	await member.add_roles(beta)
+	lvl = member.guild.get_role(846281368547360779)
+	await member.add_roles(lvl)
+	
 	await channel.send(embed = emb)
 
-Bad_word = ["бан","кик"] 
+Bad_word = ["010101"] 
 
 @client.event 
 async def on_message(message): 
@@ -113,18 +118,18 @@ async def on_command_error(ctx, err):
         await asyncio.sleep(6)
         await Err7.delete()
 
-@client.command(aliases = ["лог", "log"])
-@commands.cooldown(1, 24, commands.BucketType.user)
-@commands.has_any_role("админ")
-async def __log(ctx):
-	Masg = await ctx.send(file = discord.File(fp = "Massage.txt"))
-	await asyncio.sleep(12)
-	await Masg.delete()
+#@client.command(aliases = ["лог", "log"])
+#@commands.cooldown(1, 24, commands.BucketType.user)
+#@commands.has_any_role("админ")
+#async def log(ctx):
+	#Masg = await ctx.send(file = discord.File(fp = "Massage.txt"))
+	#await asyncio.sleep(12)
+	#await Masg.delete()
 
 @client.command(aliases = ["clear","очистка", "cl"])
 @commands.cooldown(1, 8, commands.BucketType.user)
-@commands.has_any_role("Модератор", "админ")
-async def __clear(ctx, amount = 1):
+@commands.has_any_role("модератор", "администратор")
+async def clear(ctx, amount = 1):
 	await ctx.channel.purge(limit = 1)
 	await asyncio.sleep(1)
 	await ctx.channel.purge(limit = amount)
@@ -133,14 +138,14 @@ async def __clear(ctx, amount = 1):
 	await Mas.delete()
 
 @client.command(aliases = ["ping","пинг"])
-@commands.cooldown(1, 8, commands.BucketType.user)
-async def __ping(ctx):
+@commands.cooldown(1, 6, commands.BucketType.user)
+async def ping(ctx):
 	await ctx.send(f"понг!")
 
 @client.command(aliases = ["reload", "перезагрузка"])
 
-@commands.has_any_role("админ")
-async def __reload(ctx):
+@commands.has_any_role("администратор", ".")
+async def reload(ctx):
 	embed = discord.Embed(description = "**БОТ ПЕРЕЗАПУСКАЕТСЯ**", color = 0xf5ce42)
 	embedmas = await ctx.send(embed=embed)
 	await asyncio.sleep(2)
