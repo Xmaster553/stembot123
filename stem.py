@@ -129,7 +129,7 @@ async def on_command_error(ctx, err):
 @client.command(aliases = ["clear","очистка", "cl"])
 @commands.cooldown(1, 8, commands.BucketType.user)
 @commands.has_any_role("модератор", "администратор")
-async def clear(ctx, amount = 1):
+async def __clear(ctx, amount = 1):
 	await ctx.channel.purge(limit = 1)
 	await asyncio.sleep(1)
 	await ctx.channel.purge(limit = amount)
@@ -139,13 +139,13 @@ async def clear(ctx, amount = 1):
 
 @client.command(aliases = ["ping","пинг"])
 @commands.cooldown(1, 6, commands.BucketType.user)
-async def ping(ctx):
+async def __ping(ctx):
 	await ctx.send(f"понг!")
 
 @client.command(aliases = ["reload", "перезагрузка"])
 
 @commands.has_any_role("администратор", ".")
-async def reload(ctx):
+async def __reload(ctx):
 	embed = discord.Embed(description = "**БОТ ПЕРЕЗАПУСКАЕТСЯ**", color = 0xf5ce42)
 	embedmas = await ctx.send(embed=embed)
 	await asyncio.sleep(2)
