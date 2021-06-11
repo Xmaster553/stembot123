@@ -17,7 +17,7 @@ client = commands.Bot(command_prefix = settings["PREFIX"], intents=discord.Inten
         guilds=True, members=True, messages=True, reactions=True, presences=True, voice_states=True
     ))
 client.remove_command( 'help' )
-
+#-------------------------------------------------------------------------------------------------
 @client.event
 async def on_ready():
 	now_time = nd.strftime("%H:%M:%S") 
@@ -117,7 +117,21 @@ async def on_command_error(ctx, err):
         Err7 = await ctx.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\nПожалуйста, свяжитесь с разработчиками для исправления этой ошибки"))
         await asyncio.sleep(6)
         await Err7.delete()
+	
+@client.event
+async def on_voice_state_update(member, before, after):
+	if after.channel.id == 825730949249630218:
+		for guild in Bot.guilds:
+			maincategory = discord.utils.get(guild.categories, id=825730948715905076)
+			channel2 = await guild.create_voice_channel(name=f'Канал {member.display_name}', category = maincategory)
+			await channel2.set_permissions(member,connect=True,manage_channels=True)
+			await member.move_to(channel2)
+			def check(x,y,z):
+				return len(channel2.members) == 0
+			await Bot.wait_for('voice_state_update',check=check)
+			await channel2.delete()
 
+#-------------------------------------------------------------------------------------------------
 #@client.command(aliases = ["лог", "log"])
 #@commands.cooldown(1, 24, commands.BucketType.user)
 #@commands.has_any_role("админ")
@@ -151,6 +165,20 @@ async def __reload(ctx):
 	await asyncio.sleep(2)
 	await embedmas.delete()
 	await os.execv(sys.executable, ["python"] + sys.argv)
+	
+
+	
+	
+	
+#-------------------------------------------------------------------------------------------------
+@client.command(aliases = ["ping","пинг"])
+@commands.cooldown(1, 6, commands.BucketType.user)
+async def __ping(ctx):
+	await ctx.send(f"понг!")	
+	
+	
+	
+	
 
 token = os.environ.get('token')
 
