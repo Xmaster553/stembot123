@@ -161,6 +161,20 @@ async def __reload(ctx):
 	await asyncio.sleep(2)
 	await embedmas.delete()
 	await os.execv(sys.executable, ["python"] + sys.argv)
+	
+@client.command(aliases = ["mute", "мут"])
+@commands.has_permissions(viev_audit_log=True)
+async def __mute(ctx,member:discord.Member,time:int,reason):
+	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
+	emb = discord.Embed(title=f'ВЫ ПОЛУЧИЛИ МЬЮТ НА' + time + 'ПО ПРИЧИНЕ' + reason, color = 0xf5ce42)
+	await member.add_roles(muterole)
+	await member.send(embed=emb)
+	print(f'Пользователь {member.mention} получил мьют на {time} по причине {reason} модератором {ctx.message.author.mention}')
+	await ctx.send(f":white_check_mark: Пользователь **muted** пользователя")
+	await asyncio.sleep(time)
+	await member.remove_roles(muterole)
+	
+
 
 @client.command(aliases = ["ban", "бан"])
 @commands.has_any_role("администратор", ".")
