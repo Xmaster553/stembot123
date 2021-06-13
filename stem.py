@@ -113,10 +113,6 @@ async def on_command_error(ctx, err):
         Err6 = await ctx.send(embed=discord.Embed(description=f"У бота нет прав на запуск этой команды!"))
         await asyncio.sleep(6)
         await Err6.delete()
-    else:
-        Err7 = await ctx.send(embed=discord.Embed(description=f"Произошла неизвестная ошибка: `{err}`\nПожалуйста, свяжитесь с разработчиками для исправления этой ошибки"))
-        await asyncio.sleep(6)
-        await Err7.delete()
 	
 @client.event
 async def on_voice_state_update(member, before, after):
