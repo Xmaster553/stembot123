@@ -164,7 +164,7 @@ async def __reload(ctx):
 
 @client.command(aliases = ["ban", "бан"])
 @commands.has_any_role("администратор", ".")
-async def __ban(ctx)
+async def __ban(ctx):
 	pass
 	
 #-------------------------------------------------------------------------------------------------
