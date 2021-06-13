@@ -154,7 +154,6 @@ async def __clear(ctx, amount = 1):
 	await Mas.delete()
 
 @client.command(aliases = ["reload", "перезагрузка"])
-
 @commands.has_any_role("администратор", ".")
 async def __reload(ctx):
 	embed = discord.Embed(description = "**БОТ ПЕРЕЗАПУСКАЕТСЯ**", color = 0xf5ce42)
@@ -162,18 +161,21 @@ async def __reload(ctx):
 	await asyncio.sleep(2)
 	await embedmas.delete()
 	await os.execv(sys.executable, ["python"] + sys.argv)
-	
+
+@client.command(aliases = ["ban", "бан"])
+@commands.has_any_role("администратор", ".")
+async def __ban(ctx)
+	pass
 	
 #-------------------------------------------------------------------------------------------------
 @client.command(aliases = ["ping","пинг"])
 @commands.cooldown(1, 6, commands.BucketType.user)
 async def __ping(ctx):
-	await ctx.send(f"понг!")	
+	await ctx.send(f"понг!")
 	
 	
 	
 	
 
 token = os.environ.get('token')
-
 client.run(token)
