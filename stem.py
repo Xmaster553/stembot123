@@ -125,9 +125,9 @@ async def __reload(ctx):
 	await embedmas.delete()
 	await os.execv(sys.executable, ["python"] + sys.argv)
 	
-@client.command(aliases = ["mute", "мут"])
+@client.command(self)
 @commands.has_permissions(view_audit_log=True)
-async def __mute(ctx,member:discord.Member,*,time:int,reason):
+async def __mute(ctx,member:discord.Member,*,time,reason):
 	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
 	emb = discord.Embed(title=f'ВЫ ПОЛУЧИЛИ МЬЮТ НА' + time + 'ПО ПРИЧИНЕ' + reason, color = 0xf5ce42)
 	await member.add_roles(muterole)
