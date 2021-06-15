@@ -82,34 +82,6 @@ async def on_message(message):
 			await msg.delete()
 
 @client.event
-async def on_command_error(ctx, err):
-    if isinstance(err, commands.CommandNotFound):
-        Err1 = await ctx.send(embed=discord.Embed(description=f"Команда не найдена!"))
-        await asyncio.sleep(6)
-        await Err1.delete()
-
-    elif isinstance(err, commands.BotMissingPermissions):
-        Err2 = await ctx.send(
-            embed=discord.Embed(description=f"У бота отсутствуют права: {' '.join(err.missing_perms)}\nВыдайте их ему для полного функционирования бота"))
-        await asyncio.sleep(6)
-        await Err2.delete()
-
-    elif isinstance(err, commands.MissingPermissions):
-        Err3 = await ctx.send(embed=discord.Embed(description=f"У вас недостаточно прав для запуска этой команды!"))
-        await asyncio.sleep(6)
-        await Err3.delete()
-
-    elif isinstance(err, commands.CommandOnCooldown):
-        Err5 = await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
-        await asyncio.sleep(6)
-        await Err5.delete()
-
-    elif isinstance(err, dpy_errors.Forbidden):
-        Err6 = await ctx.send(embed=discord.Embed(description=f"У бота нет прав на запуск этой команды!"))
-        await asyncio.sleep(6)
-        await Err6.delete()
-	
-@client.event
 async def on_voice_state_update(member, before, after):
 	if after.channel.id == 825730949249630218:
 		for guild in client.guilds:
