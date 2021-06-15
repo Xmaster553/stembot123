@@ -99,11 +99,6 @@ async def on_command_error(ctx, err):
         await asyncio.sleep(6)
         await Err3.delete()
 
-    elif isinstance(err, commands.UserInputError):
-        Err4 = await ctx.send(embed=discord.Embed(description=f"Правильное использование команды {ctx.command}({ctx.command.brief}): `{ctx.command.usage}`"))
-        await asyncio.sleep(6)
-        await Err4.delete()
-
     elif isinstance(err, commands.CommandOnCooldown):
         Err5 = await ctx.send(embed=discord.Embed(description=f"У вас еще не прошел кулдаун на команду {ctx.command}!\nПодождите еще {err.retry_after:.2f}"))
         await asyncio.sleep(6)
