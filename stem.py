@@ -165,7 +165,7 @@ async def __mute(ctx,member:discord.Member,*,time:int,reason):
 	emb = discord.Embed(title=f'ВЫ ПОЛУЧИЛИ МЬЮТ НА' + time + 'ПО ПРИЧИНЕ' + reason, color = 0xf5ce42)
 	await member.add_roles(muterole)
 	await member.send(embed=emb)
-	print(f'Пользователь {member.mention} получил мьют на {time} по причине {reason} модератором {ctx.message.author.mention}')
+	#print(f'Пользователь {member.mention} получил мьют на {time} по причине {reason} модератором {ctx.message.author.mention}')
 	await ctx.send(f":white_check_mark: Пользователь **muted** пользователя")
 	await asyncio.sleep(time)
 	await member.remove_roles(muterole)
