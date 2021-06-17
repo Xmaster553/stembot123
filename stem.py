@@ -148,7 +148,7 @@ async def unmute(ctx,member:discord.Member):
 @client.command(aliases = ["ban", "бан"])
 @commands.has_any_role("администратор", ".")
 async def __ban(ctx,member:discord.Member):
-	await ctx.send(f":white_check_mark: Пользователь **ban** успешно")
+	await ctx.send(f":white_check_mark: Пользователь **banned** успешно")
 	print(f'Пользователь {member} упешно забанен')
 	await member.ban()
 
