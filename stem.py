@@ -136,14 +136,22 @@ async def __mute(ctx,member:discord.Member,time:int,*,reason):
 	await ctx.send(f":white_check_mark: Пользователь **muted** пользователя")
 	await asyncio.sleep(time)
 	await member.remove_roles(muterole)
-	
 
+@client.command()
+@commands.has_any_role("администратор", ".")
+async def unmute(ctx,member:discord.Member):
+	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
+	print(f'Пользователь {member} успешно размьючен')
+	await ctx.send(f":white_check_mark: Пользователь **unmuted** пользователя")
+	await member.remove_roles(muterole)
 
 @client.command(aliases = ["ban", "бан"])
 @commands.has_any_role("администратор", ".")
-async def __ban(ctx):
-	pass
-	
+async def __ban(ctx,member:discord.Member):
+	await ctx.send(f":white_check_mark: Пользователь **ban** успешно")
+	print(f'Пользователь {member} упешно забанен')
+	await member.ban()
+
 #-------------------------------------------------------------------------------------------------
 @client.command(aliases = ["ping","пинг"])
 @commands.cooldown(1, 6, commands.BucketType.user)
