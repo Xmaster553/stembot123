@@ -160,7 +160,6 @@ async def __ping(ctx):
 	
 	
 	
-	
 
 token = os.environ.get('token')
 client.run(token)
