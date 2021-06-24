@@ -100,7 +100,7 @@ async def on_voice_state_update(member, before, after):
 @client.event
 async def on_raw_reaction_add(payload):
         if payload.message_id == configg.POST_ID:
-            channel = get_channel(payload.channel_id) # получаем объект канала
+            channel = client.get_channel(payload.channel_id) # получаем объект канала
             message = await channel.fetch_message(payload.message_id) # получаем объект сообщения
             member = utils.get(message.guild.members, id=payload.user_id) # получаем объект пользователя который поставил реакцию
  
