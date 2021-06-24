@@ -10,6 +10,7 @@ import sys
 import random
 
 from config import settings
+import configg
 
 nd = datetime.datetime.now()
 
@@ -96,6 +97,29 @@ async def on_voice_state_update(member, before, after):
 			await channel2.delete()
 			print(f'Канал {channel2} удален!')
 
+@client.event
+async def on_raw_reaction_add(payload):
+        if payload.message_id == configg.POST_ID:
+            channel = get_channel(payload.channel_id) # получаем объект канала
+            message = await channel.fetch_message(payload.message_id) # получаем объект сообщения
+            member = utils.get(message.guild.members, id=payload.user_id) # получаем объект пользователя который поставил реакцию
+ 
+            try:
+                emoji = str(payload.emoji) # эмоджик который выбрал юзер
+                role = utils.get(message.guild.roles, id=configg.ROLES[emoji]) # объект выбранной роли (если есть)
+            
+                if(len([i for i in member.roles if i.id not in configg.EXCROLES]) <= configg.MAX_ROLES_PER_USER):
+                    await member.add_roles(role)
+                    print('[SUCCESS] User {0.display_name} has been granted with role {1.name}'.format(member, role))
+                else:
+                    await message.remove_reaction(payload.emoji, member)
+                    print('[ERROR] Too many roles for user {0.display_name}'.format(member))
+            
+            except KeyError as e:
+                print('[ERROR] KeyError, no role found for ' + emoji)
+            except Exception as e:
+                print(repr(e))
+		
 #-------------------------------------------------------------------------------------------------
 #@client.command(aliases = ["лог", "log"])
 #@commands.cooldown(1, 24, commands.BucketType.user)
