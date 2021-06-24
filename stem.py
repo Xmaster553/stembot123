@@ -39,13 +39,13 @@ async def on_member_join(member):
 
 	emb = discord.Embed(title = 'ДОБРО ПОЖАЛОВАТЬ', description = f'**{member.name}** приветствуем тебя на сервере {member.guild.name}. На нашем сервере мы проводим ивенты, общаемся и играем в разные игры.\n\n**ОЗНАКОМЬСЯ С ДАННЫМИ КАНАЛАМИ:**', color = 0xCC974F)
 	emb.add_field(
-        name = '<#825464795784151111>',
+        name = f':arrow_forward: [ПРАВИЛА](https://discord.gg/KFpePpT3YA)',
         value = 'Ознакомься с правилами сервера.', inline = False)
 	emb.add_field(
-        name = '<#825466544141238303>',
+        name = f':arrow_forward: [КОМАНДЫ](https://discord.gg/yQAau4vK2W)',
         value = 'список команд для взаимодействия с ботами.', inline = False)
 	emb.add_field(
-        name = '<#825694586441695262>',
+        name = f':arrow_forward: [РОЗЫГРЫШИ](https://discord.gg/6MXrueUd63)',
         value = 'проходят ежедневные розыгрыши с хорошими призами.', inline = False)
 	emb.set_footer(text="ПРИЯТНОГО ВРЕМЯ ПРОВЕДЕНИЯ НА НАШЕМ СЕРВЕРЕ")
 
