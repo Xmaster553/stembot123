@@ -106,7 +106,7 @@ async def on_raw_reaction_add(payload):
  
             try:
                 emoji = str(payload.emoji) # эмоджик который выбрал юзер
-                role = utils.get(message.guild.roles, id=configg.ROLES[emoji]) # объект выбранной роли (если есть)
+                role = get(message.guild.roles, id=configg.ROLES[emoji]) # объект выбранной роли (если есть)
             
                 if(len([i for i in member.roles if i.id not in configg.EXCROLES]) <= configg.MAX_ROLES_PER_USER):
                     await member.add_roles(role)
