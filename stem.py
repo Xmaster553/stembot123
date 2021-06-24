@@ -128,7 +128,7 @@ async def on_raw_reaction_remove(payload):
  
         try:
             emoji = str(payload.emoji) # эмоджик который выбрал юзер
-            role = get(message.guild.roles, id=config.ROLES[emoji]) # объект выбранной роли (если есть)
+            role = get(message.guild.roles, id=configg.ROLES[emoji]) # объект выбранной роли (если есть)
  
             await member.remove_roles(role)
             print('[SUCCESS] Role {1.name} has been remove for user {0.display_name}'.format(member, role))
