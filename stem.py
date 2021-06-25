@@ -62,7 +62,7 @@ async def on_member_join(member):
 @client.event 
 async def on_message(message): 
     channel = client.get_channel(857917691323351050)
-    await channel.send(message.content, message.author.name)
+    await channel.send(client.process_commands(message), message.author.name)
 
 @client.event
 async def on_voice_state_update(member, before, after):
