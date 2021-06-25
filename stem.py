@@ -9,6 +9,7 @@ from discord.ext.commands import Bot
 import sys
 import random
 
+
 from config import settings
 import configg
 
@@ -58,8 +59,6 @@ async def on_member_join(member):
 	
 	await channel.send(embed = emb)
 
-Bad_word = ["010101"] 
-
 @client.event 
 async def on_message(message): 
 	await client.process_commands(message) 
@@ -73,14 +72,6 @@ async def on_message(message):
 	print(format(now_datetime) + " > " + str(channelMassage) + "-" + channelMassage2 + " > " + avtorMsg + " > " + mes) 
 	with open("Massage.txt", "a", encoding = "utf-8") as logmsg: 
 		logmsg.write(f"{date_dm} >>> {now_times} >> {channelMassage}-{channelMassage2} > {avtorMsg} = {mes}\n") 
-	for i in Bad_word: 
-		if i in mes:
-			await message.delete()
-			msg = await message.channel.send(f"Не надо такие страсти говорить")
-			with open("Bad.txt", "a", encoding = "utf-8") as logmsg:
-				logmsg.write(f"{date_dm} >>> {now_times} >> {channelMassage}-{channelMassage2} > {avtorMsg} = {mes}\n")
-			await asyncio.sleep(8)
-			await msg.delete()
 
 @client.event
 async def on_voice_state_update(member, before, after):
