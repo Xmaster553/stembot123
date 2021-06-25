@@ -8,7 +8,6 @@ from discord.utils import get
 from discord.ext.commands import Bot
 import sys
 import random
-import logging
 
 from config import settings
 import configg
