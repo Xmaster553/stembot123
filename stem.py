@@ -61,8 +61,9 @@ async def on_member_join(member):
 
 @client.event 
 async def on_message(message): 
-    print(message)
-
+    print('Message: ', message.content)
+    print('Member: ', message.member)
+	
 @client.event
 async def on_voice_state_update(member, before, after):
 	if after.channel.id == 825730949249630218:
