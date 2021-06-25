@@ -62,7 +62,7 @@ async def on_member_join(member):
 @client.event 
 async def on_message(message): 
     print('Message: ', message.content)
-    print('Member: ', ctx.author)
+    print('Member: ', message.author)
 	
 @client.event
 async def on_voice_state_update(member, before, after):
