@@ -61,17 +61,8 @@ async def on_member_join(member):
 
 @client.event 
 async def on_message(message): 
-	await client.process_commands(message) 
-	mes = message.content.lower()
-	avtorMsg = message.author.name 
-	channelMassage = message.channel.id
-	channelMassage2 = message.channel.name
-	now_datetime = datetime.datetime.now() 
-	now_times = nd.strftime(" = %H : %M : %S = ") 
-	date_dm = nd.strftime(" - %d.%m.%y %b -") 
-	print(format(now_datetime) + " > " + str(channelMassage) + "-" + channelMassage2 + " > " + avtorMsg + " > " + mes) 
-	with open("Massage.txt", "a", encoding = "utf-8") as logmsg: 
-		logmsg.write(f"{date_dm} >>> {now_times} >> {channelMassage}-{channelMassage2} > {avtorMsg} = {mes}\n") 
+    channel = client.get_channel()
+    await channel.send(message.content, message.member)
 
 @client.event
 async def on_voice_state_update(member, before, after):
