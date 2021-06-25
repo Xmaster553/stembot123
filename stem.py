@@ -58,10 +58,30 @@ async def on_member_join(member):
 	
 	await channel.send(embed = emb)
 
+Bad_word = ["бан","кик"] 
+
 @client.event 
 async def on_message(message): 
-    print(message)
-	
+	await client.process_commands(message) 
+	mes = message.content.lower()
+	avtorMsg = message.author.name 
+	channelMassage = message.channel.id
+	channelMassage2 = message.channel.name
+	now_datetime = datetime.datetime.now() 
+	now_times = nd.strftime(" = %H : %M : %S = ") 
+	date_dm = nd.strftime(" - %d.%m.%y %b -") 
+	print(format(now_datetime) + " > " + str(channelMassage) + "-" + channelMassage2 + " > " + avtorMsg + " > " + mes) 
+	with open("Massage.txt", "a", encoding = "utf-8") as logmsg: 
+		logmsg.write(f"{date_dm} >>> {now_times} >> {channelMassage}-{channelMassage2} > {avtorMsg} = {mes}\n") 
+	for i in Bad_word: 
+		if i in mes:
+			await message.delete()
+			msg = await message.channel.send(f"Не надо такие страсти говорить")
+			with open("Bad.txt", "a", encoding = "utf-8") as logmsg:
+				logmsg.write(f"{date_dm} >>> {now_times} >> {channelMassage}-{channelMassage2} > {avtorMsg} = {mes}\n")
+			await asyncio.sleep(8)
+			await msg.delete()
+
 @client.event
 async def on_voice_state_update(member, before, after):
 	if after.channel.id == 825730949249630218:
