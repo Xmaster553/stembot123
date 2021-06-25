@@ -62,7 +62,8 @@ async def on_member_join(member):
 @client.event 
 async def on_message(message): 
     channel = client.get_channel(857917691323351050)#здесь айди канала куда будет отправляться сообщение
-    await channel.send(message.content, message.author)
+    emb = discord.Embed(description = f'message.content, message.author')
+    await channel.send(embed = emb)
 	
 @client.event
 async def on_voice_state_update(member, before, after):
