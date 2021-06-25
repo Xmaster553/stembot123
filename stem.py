@@ -61,7 +61,7 @@ async def on_member_join(member):
 
 @client.event 
 async def on_message(message): 
-    channel = client.get_channel()
+    channel = client.get_channel(857917691323351050)
     await channel.send(message.content, message.member)
 
 @client.event
