@@ -201,10 +201,5 @@ async def __ban(ctx,member:discord.Member):
 async def __ping(ctx):
 	await ctx.send(f"понг!")
 	
-@client.command(aliases = ["send"])
-async def send(ctx):
-	emb = discord.Embed(title = 'Для получения/удаления ролей просто добавь/удали соответствующие реакции', description = f':bulb:--- 1. Роль <@835473877655486504> . Роль пингуется когда нужна помощь в снятие ролика и тд.\n\n :satellite: --- 2. Роль <@825853580757827596> . Вы можете пинговать эту роль в канале <#825696823582523412>.\n\n :loudspeaker: --- 3. Роль <@825854165020049408> . Пингуется когда проходит ивент в канале <#854108637588881448>.', color = 0xCC974F)
-	await ctx.send(embed = emb)
-
 token = os.environ.get('token')
 client.run(token)
