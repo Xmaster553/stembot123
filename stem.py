@@ -186,7 +186,7 @@ async def __ping(ctx):
 	start = perf_counter()
 	msg = await ctx.send("Ping..")
 	end = perf_counter()
-	duration = (end - start) * 1000
+	duration = nd-ctx.message.timestamp * 1000
 	await msg.edit("Pong! {0}ms".format(duration))
 	
 token = os.environ.get('token')
