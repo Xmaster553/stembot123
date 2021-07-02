@@ -132,14 +132,6 @@ async def on_raw_reaction_remove(payload):
 
 		
 #-------------------------------------------------------------------------------------------------
-#@client.command(aliases = ["лог", "log"])
-#@commands.cooldown(1, 24, commands.BucketType.user)
-#@commands.has_any_role("админ")
-#async def log(ctx):
-	#Masg = await ctx.send(file = discord.File(fp = "Massage.txt"))
-	#await asyncio.sleep(12)
-	#await Masg.delete()
-
 @client.command(aliases = ["clear","очистка", "cl"])
 @commands.cooldown(1, 8, commands.BucketType.user)
 @commands.has_any_role("модератор", "администратор")
@@ -191,7 +183,7 @@ async def __ban(ctx,member:discord.Member):
 @client.command(aliases = ["ping","пинг"])
 @commands.cooldown(1, 6, commands.BucketType.user)
 async def __ping(ctx):
-	await ctx.send(f"понг!")
+	await ctx.send('Пинг: {0}'.format(bot.latency))
 	
 token = os.environ.get('token')
 client.run(token)
