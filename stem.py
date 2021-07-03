@@ -183,9 +183,7 @@ async def __ban(ctx,member:discord.Member):
 @client.command(aliases = ["ping","пинг"])
 @commands.cooldown(1, 6, commands.BucketType.user)
 async def __ping(ctx):
-	msg = await ctx.send("Ping..")
-	duration = nd-ctx.author.time * 1000
-	await msg.edit("Pong! {0}ms".format(duration))
+	await ctx.send('Pong! {0}'.format(round(client.latency, 1)))
 	
 token = os.environ.get('token')
 client.run(token)
