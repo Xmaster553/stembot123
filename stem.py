@@ -187,10 +187,10 @@ async def __ping(ctx):
 
 @client.command()
 async def send(ctx):
-	emb = discord.Embed(title='TEST')
-	await ctx.send(embed=emb)
-	embed = discord.Embed(title='TEST2')
-	await emb.edit(embed=embed)
+	msg = discord.Embed(title='TEST')
+	await ctx.send(embed=msg)
+	await asyncio.sleep(2)
+	await msg.edit(emb = discord.Embed(title='TEST2'))
 	
 token = os.environ.get('token')
 client.run(token)
