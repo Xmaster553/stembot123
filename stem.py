@@ -184,6 +184,11 @@ async def __ban(ctx,member:discord.Member):
 @commands.cooldown(1, 6, commands.BucketType.user)
 async def __ping(ctx):
 	await ctx.send('Pong! {0}'.format(round(client.latency, 1)))
+
+@client.command()
+async def send(ctx):
+	emb = discord.Embed(title='TEST')
+	await ctx.send(embed=emb)
 	
 token = os.environ.get('token')
 client.run(token)
