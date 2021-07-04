@@ -157,7 +157,7 @@ async def __reload(ctx):
 async def __mute(ctx,member:discord.Member,time:str,*,reason):
 	total = 0
 	number = 0
-	for i in string:
+	for i in time:
 		if i in ['0', '1', '2',  '3', '4', '5', '6', '7', '8', '9']:
 			number = int(str(number) + str(i))
 		else:
