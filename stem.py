@@ -160,7 +160,7 @@ async def __mute(ctx,member:discord.Member,time:int,*,reason):
 	await member.add_roles(muterole)
 	await member.send(embed=emb)
 	#print(f'Пользователь {member.mention} получил мьют на {time} по причине {reason} модератором {ctx.message.author.mention}')
-	await ctx.send(f":white_check_mark: Пользователь **muted** пользователя")
+	await ctx.send(f":white_check_mark: Пользователь **muted** успешно")
 	await asyncio.sleep(time)
 	await member.remove_roles(muterole)
 
@@ -169,7 +169,7 @@ async def __mute(ctx,member:discord.Member,time:int,*,reason):
 async def unmute(ctx,member:discord.Member):
 	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
 	print(f'Пользователь {member} успешно размьючен')
-	await ctx.send(f":white_check_mark: Пользователь **unmuted** пользователя")
+	await ctx.send(f":white_check_mark: Пользователь **unmuted** успешно")
 	await member.remove_roles(muterole)
 
 @client.command(aliases = ["ban", "бан"])
