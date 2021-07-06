@@ -37,7 +37,7 @@ async def on_ready():
 async def on_member_join(member):
 	channel = client.get_channel(825463627586601000)
 
-	emb = discord.Embed(title = 'ДОБРО ПОЖАЛОВАТЬ', description = f'**{member.name}** приветствуем тебя на сервере {member.guild.name}. На нашем сервере мы проводим ивенты, общаемся и играем в разные игры.\n\n**ОЗНАКОМЬСЯ С ДАННЫМИ КАНАЛАМИ:**', color = 0xCC974F)
+	emb = discord.Embed(title = 'ДОБРО ПОЖАЛОВАТЬ', description = f'**{member.name}** приветствуем тебя на сервере {member.guild.name}. На нашем сервере мы проводим ивенты, общаемся и играем в разные игры.\n\n**ОЗНАКОМЬСЯ С ДАННЫМИ КАНАЛАМИ:**\n:arrow_forward: <#825464795784151111>'\n'Ознакомься с правилами сервера.'\n':arrow_forward: <#825466544141238303>'\n'список команд для взаимодействия с ботами.'\n':arrow_forward: <#825694586441695262>'\n'проходят ежедневные розыгрыши с хорошими призами.', color = 0xCC974F)
 	emb.add_field(
         name = f':arrow_forward: <#825464795784151111>',
         value = 'Ознакомься с правилами сервера.', inline = False)
