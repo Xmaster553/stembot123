@@ -153,7 +153,7 @@ async def __mute(ctx,member:discord.Member,time:int,*,reason=None):
 		return await ctx.send(f'Ты не можешь **muted** модератора!')
 		
 	if member.id == ctx.author.id:
-		return await ctx.send(f"{ctx.author.mention}, ты не можешь **Muted** себя!")
+		return await ctx.send(f"{ctx.author.mention}, ты не можешь **muted** себя!")
 
 	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
 	emb = discord.Embed(title=f'ВЫ ПОЛУЧИЛИ МЬЮТ НА {time} секунд ПО ПРИЧИНЕ {reason}', color = 0xf5ce42)
@@ -174,6 +174,9 @@ async def unmute(ctx,member:discord.Member):
 @client.command(aliases = ["ban", "бан"])
 @commands.has_any_role("администратор", ".")
 async def __ban(ctx,member:discord.Member):
+	if member.id == ctx.author.id:
+		return await ctx.send(f"{ctx.author.mention}, ты не можешь **banned** себя!")
+
 	await ctx.send(f":white_check_mark: Пользователь **banned** успешно")
 	print(f'Пользователь {member} упешно забанен')
 	await member.ban()
