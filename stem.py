@@ -148,7 +148,10 @@ async def __reload(ctx):
 async def __mute(ctx,member:discord.Member,time:int,*,reason=None):
 	if reason == None:
 		return await ctx.send("Ошибка\n`.mute [name] [time] [reason]`")
-    
+	
+	if member.top_role >= ctx.author.top_role:
+		return await ctx.send(f'Ты не можешь **muted** модератора!')
+		
 	if member.id == ctx.author.id:
 		return await ctx.send(f"{ctx.author.mention}, ты не можешь **Muted** себя!")
 
