@@ -157,9 +157,9 @@ async def __mute(ctx,member:discord.Member,time=0,*,reason=None):
 	
 	mults = {"m": 60, "h": 60 * 60, "d": 60 * 60 * 24}
 	try:
-		seconds = int(time)
+		seconds = (time)
 	except ValueError:
-		seconds = int(time[:-1]) * mults.get(time[-1], 1)
+		seconds = (time[:-1]) * mults.get(time[-1], 1)
 
 	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
 	emb = discord.Embed(title=f'ВЫ ПОЛУЧИЛИ МЬЮТ НА {time} секунд ПО ПРИЧИНЕ {reason}', color = 0xf5ce42)
