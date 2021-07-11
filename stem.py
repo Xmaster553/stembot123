@@ -145,7 +145,7 @@ async def __reload(ctx):
 	
 @client.command(aliases = ["mute", "мут"])
 @commands.has_permissions(view_audit_log=True)
-async def __mute(ctx,member:discord.Member,time:int,*,reason=None):
+async def __mute(ctx,member:discord.Member,time=0,*,reason=None):
 	if reason == None:
 		return await ctx.send("Ошибка\n`.mute [name] [time] [reason]`")
 	
