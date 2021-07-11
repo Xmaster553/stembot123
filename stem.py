@@ -158,7 +158,7 @@ async def __mute(ctx,member:discord.Member,time:int,*,reason=None):
 	mults = {"m": 60, "h": 60 * 60, "d": 60 * 60 * 24}
 	try:
 		seconds = int(time)
-  	except ValueError:
+	except ValueError:
 		seconds = int(time[:-1]) * mults.get(time[-1], 1)
 
 	muterole = discord.utils.get(ctx.guild.roles, id=825804010271145984)
